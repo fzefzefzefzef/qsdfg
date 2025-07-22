@@ -1,156 +1,206 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Login</title>
-  <style>
-    * {
-      box-sizing: border-box;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #200C32; /* Dark purple background */
+            color: #FFFFFF; /* White text */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow: hidden; /* Prevent scrollbars if content is slightly larger */
+        }
 
-    body {
-      margin: 0;
-      padding: 0;
-      background-color: #0d001a;
-      font-family: "Arial", sans-serif;
-      color: #fff;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-    }
+        .login-container {
+            background-color: #200C32; /* Same as body for seamless look */
+            padding: 40px;
+            border-radius: 8px;
+            text-align: center;
+            width: 100%;
+            max-width: 400px;
+            box-sizing: border-box; /* Include padding in the width */
+        }
 
-    .container {
-      width: 100%;
-      max-width: 350px;
-      padding: 20px;
-    }
+        h1 {
+            color: #FFFFFF;
+            margin-bottom: 40px;
+            font-size: 2.5em;
+            font-weight: bold; /* Based on the image, seems bold */
+        }
 
-    h1 {
-      font-size: 32px;
-      font-weight: 700;
-      margin-bottom: 30px;
-    }
+        .input-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
 
-    label {
-      display: block;
-      font-size: 14px;
-      margin-bottom: 5px;
-    }
+        .input-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 1.1em;
+            color: #FFFFFF;
+        }
 
-    input[type="email"],
-    input[type="password"] {
-      width: 100%;
-      background-color: #2a213b;
-      color: #fff;
-      border: none;
-      border-radius: 6px;
-      padding: 12px 14px;
-      font-size: 14px;
-      margin-bottom: 20px;
-    }
+        .input-group input {
+            width: calc(100% - 20px); /* Account for padding */
+            padding: 12px 10px;
+            background-color: #4C3C5F; /* Darker purple for input fields */
+            border: none;
+            border-radius: 5px;
+            color: #FFFFFF;
+            font-size: 1em;
+            box-sizing: border-box; /* Include padding in the width */
+        }
 
-    .password-wrapper {
-      position: relative;
-    }
+        .password-input-wrapper {
+            position: relative;
+            width: 100%;
+        }
 
-    .password-wrapper .eye {
-      position: absolute;
-      right: 12px;
-      top: 50%;
-      transform: translateY(-50%);
-      cursor: pointer;
-      font-size: 16px;
-      color: #aaa;
-    }
+        .password-input-wrapper input {
+            width: calc(100% - 50px); /* Adjust width for eye icon */
+            padding-right: 40px; /* Space for eye icon */
+        }
 
-    button[type="submit"] {
-      width: 100%;
-      background-color: #8b4dfd;
-      border: none;
-      color: white;
-      font-weight: 600;
-      font-size: 15px;
-      padding: 12px;
-      border-radius: 6px;
-      margin-top: 10px;
-      cursor: pointer;
-    }
+        .password-input-wrapper .eye-icon {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: #A0A0A0; /* Gray color for eye icon */
+            font-size: 1.2em; /* Adjust size of eye icon */
+        }
 
-    .links {
-      margin-top: 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
+        .login-button {
+            width: 100%;
+            padding: 15px;
+            background-color: #8A2BE2; /* Violet color for button */
+            color: #FFFFFF;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2em;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+            font-weight: bold; /* Button text seems bold */
+        }
 
-    .links a {
-      color: #9c74ff;
-      font-size: 14px;
-      text-decoration: none;
-    }
+        .login-button:hover {
+            background-color: #9932CC; /* Darker violet on hover */
+        }
 
-    .footer-note {
-      margin-top: 30px;
-      font-size: 12px;
-      color: #ccc;
-      line-height: 1.4;
-    }
+        .links {
+            margin-top: 25px;
+        }
 
-    .footer-note a {
-      color: #53b0ff;
-      text-decoration: none;
-    }
+        .links a {
+            display: block;
+            color: #8A2BE2; /* Violet color for links */
+            text-decoration: none;
+            margin-bottom: 10px;
+            font-size: 1em;
+            transition: color 0.3s ease;
+        }
 
-    .support-button {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-    }
+        .links a:hover {
+            color: #9932CC; /* Darker violet on hover */
+        }
 
-    .support-button button {
-      background-color: #8b4dfd;
-      color: white;
-      font-weight: bold;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 25px;
-      cursor: pointer;
-      font-size: 14px;
-    }
-  </style>
+        .gambling-help {
+            margin-top: 50px;
+            font-size: 0.9em;
+            color: #A0A0A0; /* Gray color for help text */
+            line-height: 1.5; /* Improve readability for multi-line text */
+        }
+
+        .gambling-help a {
+            color: #8A2BE2; /* Violet color for help link */
+            text-decoration: none;
+        }
+
+        .support-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #8A2BE2; /* Violet color for support button */
+            color: #FFFFFF;
+            border: none;
+            border-radius: 30px; /* Make it circular/pill shaped */
+            padding: 12px 20px;
+            font-size: 1em;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease;
+            font-weight: bold;
+        }
+
+        .support-button:hover {
+            background-color: #9932CC; /* Darker violet on hover */
+        }
+
+        .support-button .icon {
+            margin-right: 8px;
+            width: 20px; /* Adjust size of icon */
+            height: 20px;
+            /* Using a mask/filter for SVG to make it white */
+            -webkit-mask: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLXN1cHBvcnQtY2lyY2xlIj48Y2lyY2xlIGN4PSIxMiIgY3k9IjEyIiByPSIxMCIvPjxwYXRoIGQ9Ik0zIDdhOSA5IDAgMCAxIDE4IDB2MWE5IDkgMCAwIDEtMTggMHoiLz48cGF0aCBkPSJNOSAxNmg2Ii8+PHBhdGggZD0iTTEyIDl2MyIvPjxwYXRoIGQ9Ik05IDEySDZtMC0wYTIgMiAwIDAgMC0yLTJ2MyIvPjwvc3ZnPg==') no-repeat center / contain;
+            mask: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My4zcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLXN1cHBvcnQtY2lyY2xlIj48Y2lyY2xlIGN4PSIxMiIgY3k9IjEyIiByPSIxMCIvPjxwYXRoIGQ9Ik0zIDdhOSA5IDAgMCAxIDE4IDB2MWE5IDkgMCAwIDEtMTggMHoiLz48cGF0aCBkPSJNOSAxNmg2Ii8+PHBhdGggZD0iTTEyIDl2MyIvPjxwYXRoIGQ9Ik05IDEySDZtMC0wYTIgMiAwIDAgMC0yLTJ2MyIvPjwvc3ZnPg==') no-repeat center / contain;
+            background-color: white; /* This color will be applied to the masked area */
+        }
+    </style>
 </head>
 <body>
-  <div class="container">
-    <h1>Login</h1>
-    <form>
-      <label for="email">Email</label>
-      <input type="email" id="email" placeholder="">
+    <div class="login-container">
+        <h1>Login</h1>
 
-      <label for="password">Password</label>
-      <div class="password-wrapper">
-        <input type="password" id="password" placeholder="">
-        <span class="eye">&#128065;</span>
-      </div>
+        <div class="input-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="">
+        </div>
 
-      <button type="submit">Log In</button>
-    </form>
+        <div class="input-group">
+            <label for="password">Password</label>
+            <div class="password-input-wrapper">
+                <input type="password" id="password" name="password" placeholder="">
+                <span class="eye-icon" onclick="togglePasswordVisibility()">👁️</span>
+            </div>
+        </div>
 
-    <div class="links">
-      <a href="#">Forgot Password?</a>
-      <a href="#">Create New Account</a>
+        <button class="login-button">Log In</button>
+
+        <div class="links">
+            <a href="#">Forgot Password?</a>
+            <a href="#">Create New Account</a>
+        </div>
+
+        <p class="gambling-help">If you or anyone you know has a gambling problem<br> and wants help, call <a href="tel:1-800-GAMBLER">1-800-GAMBLER</a></p>
     </div>
 
-    <div class="footer-note">
-      If you or anyone you know has a gambling problem<br />
-      and wants help, call <a href="tel:1-800-GAMBLER">1-800-GAMBLER</a>
-    </div>
-  </div>
+    <button class="support-button">
+        <span class="icon"></span>
+        Support
+    </button>
 
-  <div class="support-button">
-    <button>Support</button>
-  </div>
+    <script>
+        function togglePasswordVisibility() {
+            const passwordField = document.getElementById('password');
+            const eyeIcon = document.querySelector('.eye-icon');
+            if (passwordField.type === 'password') {
+                passwordField.type = 'text';
+                eyeIcon.textContent = '🙈'; // Closed eye icon
+            } else {
+                passwordField.type = 'password';
+                eyeIcon.textContent = '👁️'; // Open eye icon
+            }
+        }
+    </script>
 </body>
 </html>
