@@ -1,48 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Login</title>
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
       padding: 0;
-      font-family: Arial, sans-serif;
-      background-color: #0c0015;
-      color: white;
+      background-color: #0d001a;
+      font-family: "Arial", sans-serif;
+      color: #fff;
+      height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
       flex-direction: column;
     }
 
-    .login-container {
-      width: 300px;
-      display: flex;
-      flex-direction: column;
+    .container {
+      width: 100%;
+      max-width: 350px;
+      padding: 20px;
     }
 
     h1 {
-      margin-bottom: 20px;
       font-size: 32px;
-      font-weight: bold;
+      font-weight: 700;
+      margin-bottom: 30px;
     }
 
     label {
-      margin-bottom: 5px;
+      display: block;
       font-size: 14px;
+      margin-bottom: 5px;
     }
 
     input[type="email"],
     input[type="password"] {
       width: 100%;
-      padding: 10px;
-      background-color: #2c2238;
+      background-color: #2a213b;
+      color: #fff;
       border: none;
       border-radius: 6px;
-      margin-bottom: 15px;
-      color: white;
+      padding: 12px 14px;
+      font-size: 14px;
+      margin-bottom: 20px;
     }
 
     .password-wrapper {
@@ -51,75 +58,80 @@
 
     .password-wrapper .eye {
       position: absolute;
-      right: 10px;
-      top: 12px;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
       cursor: pointer;
+      font-size: 16px;
       color: #aaa;
     }
 
     button[type="submit"] {
       width: 100%;
-      padding: 10px;
-      background-color: #8d4bff;
+      background-color: #8b4dfd;
       border: none;
-      border-radius: 6px;
       color: white;
-      font-weight: bold;
-      cursor: pointer;
+      font-weight: 600;
+      font-size: 15px;
+      padding: 12px;
+      border-radius: 6px;
       margin-top: 10px;
+      cursor: pointer;
     }
 
     .links {
-      margin-top: 15px;
+      margin-top: 20px;
       display: flex;
       flex-direction: column;
+      gap: 8px;
     }
 
     .links a {
-      color: #9d6fff;
+      color: #9c74ff;
       font-size: 14px;
-      margin-bottom: 5px;
       text-decoration: none;
     }
 
     .footer-note {
-      margin-top: 20px;
+      margin-top: 30px;
       font-size: 12px;
       color: #ccc;
+      line-height: 1.4;
     }
 
     .footer-note a {
-      color: #8bd1ff;
+      color: #53b0ff;
       text-decoration: none;
     }
 
     .support-button {
       position: fixed;
-      bottom: 15px;
+      bottom: 20px;
       right: 20px;
     }
 
     .support-button button {
-      background-color: #8d4bff;
-      border: none;
-      padding: 10px 16px;
-      border-radius: 25px;
+      background-color: #8b4dfd;
       color: white;
       font-weight: bold;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 25px;
       cursor: pointer;
+      font-size: 14px;
     }
   </style>
 </head>
 <body>
-  <div class="login-container">
+  <div class="container">
     <h1>Login</h1>
     <form>
       <label for="email">Email</label>
-      <input type="email" id="email" placeholder="Enter your email">
+      <input type="email" id="email" placeholder="">
 
       <label for="password">Password</label>
       <div class="password-wrapper">
-        <input type="password" id="password" placeholder="Enter your password">
+        <input type="password" id="password" placeholder="">
         <span class="eye">&#128065;</span>
       </div>
 
@@ -131,14 +143,14 @@
       <a href="#">Create New Account</a>
     </div>
 
-    <p class="footer-note">
-      If you or anyone you know has a gambling problem and wants help, call
-      <a href="tel:1-800-GAMBLER">1-800-GAMBLER</a>
-    </p>
+    <div class="footer-note">
+      If you or anyone you know has a gambling problem<br />
+      and wants help, call <a href="tel:1-800-GAMBLER">1-800-GAMBLER</a>
+    </div>
   </div>
 
   <div class="support-button">
-    <button>❓ Support</button>
+    <button>Support</button>
   </div>
 </body>
 </html>
