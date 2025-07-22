@@ -11,38 +11,50 @@
             background-color: #200C32; /* Dark purple background */
             color: #FFFFFF; /* White text */
             display: flex;
-            justify-content: center;
-            align-items: center;
+            /* No longer directly centering the login-container here.
+               We'll use a wrapper for the login part. */
             min-height: 100vh;
-            overflow: hidden; /* Prevent scrollbars if content is slightly larger */
+            overflow: hidden;
         }
 
-        .left-text {
-            position: absolute;
-            top: 50%; /* Center vertically */
-            left: 20px; /* Adjust distance from the left edge */
-            transform: translateY(-50%); /* Fine-tune vertical centering */
-            color: #FFFFFF; /* White color for the text */
-            font-size: 3em; /* Make it prominent */
+        .page-wrapper {
+            display: flex;
+            width: 100vw; /* Take full viewport width */
+            height: 100vh; /* Take full viewport height */
+            justify-content: center; /* Center horizontally */
+            align-items: center; /* Center vertically */
+            position: relative; /* For absolute positioning of elements within */
+        }
+
+        .left-text-container {
+            position: absolute; /* Position relative to .page-wrapper */
+            left: 5%; /* Adjust distance from the left edge */
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 10;
+            color: #FFFFFF;
+            font-size: 3em;
             font-weight: bold;
-            white-space: nowrap; /* Prevent text from wrapping */
+            white-space: nowrap;
         }
 
         .login-container {
-            background-color: #200C32; /* Same as body for seamless look */
+            background-color: #200C32;
             padding: 40px;
             border-radius: 8px;
             text-align: center;
             width: 100%;
             max-width: 400px;
-            box-sizing: border-box; /* Include padding in the width */
+            box-sizing: border-box;
+            z-index: 1; /* Ensure it's behind the 'Hiii' if overlapping */
+            /* Removed position: relative from here if you don't need absolute children inside it */
         }
 
         h1 {
             color: #FFFFFF;
             margin-bottom: 40px;
             font-size: 2.5em;
-            font-weight: bold; /* Based on the image, seems bold */
+            font-weight: bold;
         }
 
         .input-group {
@@ -58,14 +70,14 @@
         }
 
         .input-group input {
-            width: calc(100% - 20px); /* Account for padding */
+            width: calc(100% - 20px);
             padding: 12px 10px;
-            background-color: #4C3C5F; /* Darker purple for input fields */
+            background-color: #4C3C5F;
             border: none;
             border-radius: 5px;
             color: #FFFFFF;
             font-size: 1em;
-            box-sizing: border-box; /* Include padding in the width */
+            box-sizing: border-box;
         }
 
         .password-input-wrapper {
@@ -74,8 +86,8 @@
         }
 
         .password-input-wrapper input {
-            width: calc(100% - 50px); /* Adjust width for eye icon */
-            padding-right: 40px; /* Space for eye icon */
+            width: calc(100% - 50px);
+            padding-right: 40px;
         }
 
         .password-input-wrapper .eye-icon {
@@ -84,14 +96,14 @@
             top: 50%;
             transform: translateY(-50%);
             cursor: pointer;
-            color: #A0A0A0; /* Gray color for eye icon */
-            font-size: 1.2em; /* Adjust size of eye icon */
+            color: #A0A0A0;
+            font-size: 1.2em;
         }
 
         .login-button {
             width: 100%;
             padding: 15px;
-            background-color: #8A2BE2; /* Violet color for button */
+            background-color: #8A2BE2;
             color: #FFFFFF;
             border: none;
             border-radius: 5px;
@@ -99,11 +111,11 @@
             cursor: pointer;
             margin-top: 20px;
             transition: background-color 0.3s ease;
-            font-weight: bold; /* Button text seems bold */
+            font-weight: bold;
         }
 
         .login-button:hover {
-            background-color: #9932CC; /* Darker violet on hover */
+            background-color: #9932CC;
         }
 
         .links {
@@ -112,7 +124,7 @@
 
         .links a {
             display: block;
-            color: #8A2BE2; /* Violet color for links */
+            color: #8A2BE2;
             text-decoration: none;
             margin-bottom: 10px;
             font-size: 1em;
@@ -120,18 +132,18 @@
         }
 
         .links a:hover {
-            color: #9932CC; /* Darker violet on hover */
+            color: #9932CC;
         }
 
         .gambling-help {
             margin-top: 50px;
             font-size: 0.9em;
-            color: #A0A0A0; /* Gray color for help text */
-            line-height: 1.5; /* Improve readability for multi-line text */
+            color: #A0A0A0;
+            line-height: 1.5;
         }
 
         .gambling-help a {
-            color: #8A2BE2; /* Violet color for help link */
+            color: #8A2BE2;
             text-decoration: none;
         }
 
@@ -139,10 +151,10 @@
             position: fixed;
             bottom: 20px;
             right: 20px;
-            background-color: #8A2BE2; /* Violet color for support button */
+            background-color: #8A2BE2;
             color: #FFFFFF;
             border: none;
-            border-radius: 30px; /* Make it circular/pill shaped */
+            border-radius: 30px;
             padding: 12px 20px;
             font-size: 1em;
             cursor: pointer;
@@ -151,49 +163,51 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             transition: background-color 0.3s ease;
             font-weight: bold;
+            z-index: 100;
         }
 
         .support-button:hover {
-            background-color: #9932CC; /* Darker violet on hover */
+            background-color: #9932CC;
         }
 
         .support-button .icon {
             margin-right: 8px;
-            width: 20px; /* Adjust size of icon */
+            width: 20px;
             height: 20px;
-            /* Using a mask/filter for SVG to make it white */
             -webkit-mask: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLXN1cHBvcnQtY2lyY2xlIj48Y2lyY2xlIGN4PSIxMiIgY3k9IjEyIiByPSIxMCIvPjxwYXRoIGQ9Ik0zIDdhOSA5IDAgMCAxIDE4IDB2MWE5IDkgMCAwIDEtMTggMHoiLz48cGF0aCBkPSJNOSAxNmg2Ii8+PHBhdGlsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLXN1cHBvcnQtY2lyY2xlIj48Y2lyY2xlIGN4PSIxMiIgY3k9IjEyIiByPSIxMCIvPjxwYXRoIGQ9Ik0zIDdhOSA5IDAgMCAxIDE4IDB2MWE5IDkgMCAwIDEtMTggMHoiLz48cGF0aCBkPSJNOSAxNmg2Ii8+PHBhdGggZD0iTTEyIDl2MyIvPjxwYXRoIGQ9Ik05IDEySDZtMC0wYTIgMiAwIDAgMC0yLTJ2MyIvPjwvc3ZnPg==') no-repeat center / contain;
-            mask: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLXN1cHBvcnQtY2lyY2xlIj48Y2lyY2xlIGN4PSIxMiIgY3k9IjEyIiByPSIxMCIvPjxwYXRoIGQ9Ik0zIDdhOSA5IDAgMCAxIDE4IDB2MWE5IDkgMCAwIDEtMTggMHoiLz48cGF0aCBkPSJNOSAxNmg2Ii8+PHBhdGogZD0iTTEyIDl2MyIvPjxwYXRoIGQ9Ik05IDEySDZtMC0wYTIgMiAwIDAgMC0yLTJ2MyIvPjwvc3ZnPg==') no-repeat center / contain;
-            background-color: white; /* This color will be applied to the masked area */
+            mask: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLXN1cHBvcnQtY2lyY2xlIj48Y2lyY2xlIGN4PSIxMiIgY3k9IjEyIiByPSIxMCIvPjxwYXRoIGQ9Ik0zIDdhOSA5IDAgMCAxIDE4IDB2MWE5IDkgMCAwIDEtMTggMHoiLz48cGF0aCBkPSJNOSAxNmg2Ii8+PHBhdGggZD0iTTEyIDl2MyIvPjxwYXRoIGQ9Ik05IDEySDZtMC0wYTIgMiAwIDAgMC0yLTJ2MyIvPjwvc3ZnPg==') no-repeat center / contain;
+            background-color: white;
         }
     </style>
 </head>
 <body>
-    <div class="left-text">PoC Syybsam</div>
-    <div class="login-container">
-        <h1>Login</h1>
+    <div class="page-wrapper">
+        <div class="left-text-container">PoC by syybsam</div>
+        <div class="login-container">
+            <h1>Login</h1>
 
-        <div class="input-group">
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" placeholder="">
-        </div>
-
-        <div class="input-group">
-            <label for="password">Password</label>
-            <div class="password-input-wrapper">
-                <input type="password" id="password" name="password" placeholder="">
-                <span class="eye-icon" onclick="togglePasswordVisibility()">👁️</span>
+            <div class="input-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="">
             </div>
+
+            <div class="input-group">
+                <label for="password">Password</label>
+                <div class="password-input-wrapper">
+                    <input type="password" id="password" name="password" placeholder="">
+                    <span class="eye-icon" onclick="togglePasswordVisibility()">👁️</span>
+                </div>
+            </div>
+
+            <button class="login-button">Log In</button>
+
+            <div class="links">
+                <a href="#">Forgot Password?</a>
+                <a href="#">Create New Account</a>
+            </div>
+
+            <p class="gambling-help">If you or anyone you know has a gambling problem<br> and wants help, call <a href="tel:1-800-GAMBLER">1-800-GAMBLER</a></p>
         </div>
-
-        <button class="login-button">Log In</button>
-
-        <div class="links">
-            <a href="#">Forgot Password?</a>
-            <a href="#">Create New Account</a>
-        </div>
-
-        <p class="gambling-help">If you or anyone you know has a gambling problem<br> and wants help, call <a href="tel:1-800-GAMBLER">1-800-GAMBLER</a></p>
     </div>
 
     <button class="support-button">
