@@ -1,72 +1,195 @@
-<!doctype html>
-<html lang="en" data-critters-container>
-  <head>
-    <meta charset="utf-8">
-    <title>Jackpocket</title>
-    <base href="/">
-
-    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
-
-    <link rel="apple-touch-icon" href="assets/images/favicon/favicon-16x16.png">
-    <link rel="apple-touch-icon" sizes="16x16" href="assets/images/favicon/apple-touch-icon-16x16.png">
-    <link rel="apple-touch-icon" sizes="32x32" href="assets/images/favicon/apple-touch-icon-32x32.png">
-    <link rel="apple-touch-icon" sizes="48x48" href="assets/images/favicon/apple-touch-icon-48x48.png">
-    <link rel="apple-touch-icon" sizes="64x64" href="assets/images/favicon/apple-touch-icon-64x64.png">
-
-    <link rel="icon" type="image/png" sizes="64x64" href="assets/images/favicon/favicon-64x64.png">
-    <link rel="icon" type="image/png" sizes="48x48" href="assets/images/favicon/favicon-48x48.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon/favicon-16x16.png">
-
-    <link rel="shortcut icon" href="assets/images/favicon/favicon.ico">
-    <meta content="#1976d2" name="theme-color">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
     <style>
-      body {
-        visibility: hidden;
-      }
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #200C32; /* Dark purple background */
+            color: #FFFFFF; /* White text */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
 
-      .app-loaded {
-        visibility: visible;
-      }
+        .login-container {
+            background-color: #200C32; /* Same as body for seamless look */
+            padding: 40px;
+            border-radius: 8px;
+            text-align: center;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        h1 {
+            color: #FFFFFF;
+            margin-bottom: 40px;
+            font-size: 2.5em;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 1.1em;
+            color: #FFFFFF;
+        }
+
+        .input-group input {
+            width: calc(100% - 20px);
+            padding: 12px 10px;
+            background-color: #4C3C5F; /* Darker purple for input fields */
+            border: none;
+            border-radius: 5px;
+            color: #FFFFFF;
+            font-size: 1em;
+        }
+
+        .password-input-wrapper {
+            position: relative;
+            width: 100%;
+        }
+
+        .password-input-wrapper input {
+            width: calc(100% - 50px); /* Adjust width for eye icon */
+            padding-right: 40px; /* Space for eye icon */
+        }
+
+        .password-input-wrapper .eye-icon {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: #A0A0A0; /* Gray color for eye icon */
+        }
+
+        .login-button {
+            width: 100%;
+            padding: 15px;
+            background-color: #8A2BE2; /* Violet color for button */
+            color: #FFFFFF;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2em;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        .login-button:hover {
+            background-color: #9932CC; /* Darker violet on hover */
+        }
+
+        .links {
+            margin-top: 25px;
+        }
+
+        .links a {
+            display: block;
+            color: #8A2BE2; /* Violet color for links */
+            text-decoration: none;
+            margin-bottom: 10px;
+            font-size: 1em;
+            transition: color 0.3s ease;
+        }
+
+        .links a:hover {
+            color: #9932CC; /* Darker violet on hover */
+        }
+
+        .gambling-help {
+            margin-top: 50px;
+            font-size: 0.9em;
+            color: #A0A0A0; /* Gray color for help text */
+        }
+
+        .gambling-help a {
+            color: #8A2BE2; /* Violet color for help link */
+            text-decoration: none;
+        }
+
+        .support-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #8A2BE2; /* Violet color for support button */
+            color: #FFFFFF;
+            border: none;
+            border-radius: 30px; /* Make it circular/pill shaped */
+            padding: 12px 20px;
+            font-size: 1em;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease;
+        }
+
+        .support-button:hover {
+            background-color: #9932CC; /* Darker violet on hover */
+        }
+
+        .support-button img {
+            margin-right: 8px;
+            width: 20px; /* Adjust size of icon */
+            height: 20px;
+            filter: invert(100%); /* Make icon white */
+        }
     </style>
-  <style>@charset "UTF-8";@import"https://p.typekit.net/p.css?s=1&k=mjx3fkh&ht=tk&f=177.178.179.180.43385&a=101112682&app=typekit&e=css";@font-face{font-family:Proxima Nova;src:url("./media/ProximaNova-Regular-NRCLBQKE.eot");src:local("Proxima Nova Regular"),local("ProximaNova-Regular"),url("./media/ProximaNova-Regular-NRCLBQKE.eot?#iefix") format("embedded-opentype"),url("./media/ProximaNova-Regular-JYYVGF2S.woff2") format("woff2"),url("./media/ProximaNova-Regular-LQXI7X2N.woff") format("woff"),url("./media/ProximaNova-Regular-SFAXR36M.ttf") format("truetype");font-weight:400;font-style:normal}:root{--bs-blue:#0d6efd;--bs-indigo:#6610f2;--bs-purple:#803cd6;--bs-pink:#d63384;--bs-red:#dc3545;--bs-orange:#fd7e14;--bs-yellow:#ffc107;--bs-green:#198754;--bs-teal:#20c997;--bs-cyan:#0dcaf0;--bs-black:#000000;--bs-white:#ffffff;--bs-gray:#6c757d;--bs-gray-dark:#343a40;--bs-gray-100:#f8f9fa;--bs-gray-200:#e9ecef;--bs-gray-300:#dee2e6;--bs-gray-400:#ced4da;--bs-gray-500:#adb5bd;--bs-gray-600:#6c757d;--bs-gray-700:#495057;--bs-gray-800:#343a40;--bs-gray-900:#212529;--bs-primary:#803cd6;--bs-secondary:#803cd6;--bs-success:#b6debc;--bs-info:#1972c0;--bs-warning:#c64137;--bs-danger:#ef6a60;--bs-light:#c4c4c4;--bs-dark:#777d8b;--bs-red:#ef6a60;--bs-orange:#7b2822;--bs-green:#b6debc;--bs-gray:#777d8b;--bs-primary-rgb:128, 60, 214;--bs-secondary-rgb:128, 60, 214;--bs-success-rgb:182, 222, 188;--bs-info-rgb:25, 114, 192;--bs-warning-rgb:198, 65, 55;--bs-danger-rgb:239, 106, 96;--bs-light-rgb:196, 196, 196;--bs-dark-rgb:119, 125, 139;--bs-red-rgb:239, 106, 96;--bs-orange-rgb:123, 40, 34;--bs-green-rgb:182, 222, 188;--bs-gray-rgb:119, 125, 139;--bs-primary-text-emphasis:#052c65;--bs-secondary-text-emphasis:#2b2f32;--bs-success-text-emphasis:#49594b;--bs-info-text-emphasis:#0a2e4d;--bs-warning-text-emphasis:#664d03;--bs-danger-text-emphasis:#58151c;--bs-light-text-emphasis:#495057;--bs-dark-text-emphasis:#495057;--bs-primary-bg-subtle:#cfe2ff;--bs-secondary-bg-subtle:#e2e3e5;--bs-success-bg-subtle:#f0f8f2;--bs-info-bg-subtle:#d1e3f2;--bs-warning-bg-subtle:#fff3cd;--bs-danger-bg-subtle:#f8d7da;--bs-light-bg-subtle:#fcfcfd;--bs-dark-bg-subtle:#ced4da;--bs-primary-border-subtle:#9ec5fe;--bs-secondary-border-subtle:#c4c8cb;--bs-success-border-subtle:#e2f2e4;--bs-info-border-subtle:#a3c7e6;--bs-warning-border-subtle:#ffe69c;--bs-danger-border-subtle:#f1aeb5;--bs-light-border-subtle:#e9ecef;--bs-dark-border-subtle:#adb5bd;--bs-white-rgb:255, 255, 255;--bs-black-rgb:0, 0, 0;--bs-font-sans-serif:system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";--bs-font-monospace:SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;--bs-gradient:linear-gradient(180deg, rgba(255, 255, 255, .15), rgba(255, 255, 255, 0));--bs-body-font-family:var(--bs-font-sans-serif);--bs-body-font-size:1rem;--bs-body-font-weight:400;--bs-body-line-height:1.5;--bs-body-color:#212529;--bs-body-color-rgb:33, 37, 41;--bs-body-bg:#ffffff;--bs-body-bg-rgb:255, 255, 255;--bs-emphasis-color:#000000;--bs-emphasis-color-rgb:0, 0, 0;--bs-secondary-color:rgba(33, 37, 41, .75);--bs-secondary-color-rgb:33, 37, 41;--bs-secondary-bg:#e9ecef;--bs-secondary-bg-rgb:233, 236, 239;--bs-tertiary-color:rgba(33, 37, 41, .5);--bs-tertiary-color-rgb:33, 37, 41;--bs-tertiary-bg:#f8f9fa;--bs-tertiary-bg-rgb:248, 249, 250;--bs-heading-color:inherit;--bs-link-color:#803cd6;--bs-link-color-rgb:128, 60, 214;--bs-link-decoration:underline;--bs-link-hover-color:#6630ab;--bs-link-hover-color-rgb:102, 48, 171;--bs-code-color:#d63384;--bs-highlight-color:#212529;--bs-highlight-bg:#fff3cd;--bs-border-width:1px;--bs-border-style:solid;--bs-border-color:#dee2e6;--bs-border-color-translucent:rgba(0, 0, 0, .175);--bs-border-radius:.375rem;--bs-border-radius-sm:.25rem;--bs-border-radius-lg:.5rem;--bs-border-radius-xl:1rem;--bs-border-radius-xxl:2rem;--bs-border-radius-2xl:var(--bs-border-radius-xxl);--bs-border-radius-pill:50rem;--bs-box-shadow:0 .5rem 1rem rgba(0, 0, 0, .15);--bs-box-shadow-sm:0 .125rem .25rem rgba(0, 0, 0, .075);--bs-box-shadow-lg:0 1rem 3rem rgba(0, 0, 0, .175);--bs-box-shadow-inset:inset 0 1px 2px rgba(0, 0, 0, .075);--bs-focus-ring-width:.25rem;--bs-focus-ring-opacity:.25;--bs-focus-ring-color:rgba(13, 110, 253, .25);--bs-form-valid-color:#b6debc;--bs-form-valid-border-color:#b6debc;--bs-form-invalid-color:#dc3545;--bs-form-invalid-border-color:#dc3545}@media (prefers-reduced-motion: no-preference){:root{scroll-behavior:smooth}}body{margin:0;font-family:var(--bs-body-font-family);font-size:var(--bs-body-font-size);font-weight:var(--bs-body-font-weight);line-height:var(--bs-body-line-height);color:var(--bs-body-color);text-align:var(--bs-body-text-align);background-color:var(--bs-body-bg);-webkit-text-size-adjust:100%;-webkit-tap-highlight-color:rgba(0,0,0,0)}:root{--bs-breakpoint-xs:0;--bs-breakpoint-sm:576px;--bs-breakpoint-md:768px;--bs-breakpoint-lg:992px;--bs-breakpoint-xl:1200px;--bs-breakpoint-xxl:1400px}@font-face{font-family:Proxima Nova;src:url("./media/ProximaNova-Regular-NRCLBQKE.eot");src:local("Proxima Nova Regular"),local("ProximaNova-Regular"),url("./media/ProximaNova-Regular-NRCLBQKE.eot?#iefix") format("embedded-opentype"),url("./media/ProximaNova-Regular-JYYVGF2S.woff2") format("woff2"),url("./media/ProximaNova-Regular-LQXI7X2N.woff") format("woff"),url("./media/ProximaNova-Regular-SFAXR36M.ttf") format("truetype");font-weight:400;font-style:normal}*,*:before,*:after{box-sizing:border-box}html,body{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased;-webkit-text-size-adjust:none;text-size-adjust:none}body{line-height:1}body{font-family:Proxima Nova,sans-serif;color:#fff;font-size:1rem}@font-face{font-family:Proxima Nova;src:url("./media/ProximaNova-Regular-NRCLBQKE.eot");src:local("Proxima Nova Regular"),local("ProximaNova-Regular"),url("./media/ProximaNova-Regular-NRCLBQKE.eot?#iefix") format("embedded-opentype"),url("./media/ProximaNova-Regular-JYYVGF2S.woff2") format("woff2"),url("./media/ProximaNova-Regular-LQXI7X2N.woff") format("woff"),url("./media/ProximaNova-Regular-SFAXR36M.ttf") format("truetype");font-weight:400;font-style:normal}@font-face{font-family:Proxima Nova;src:url("./media/ProximaNova-Regular-NRCLBQKE.eot");src:local("Proxima Nova Regular"),local("ProximaNova-Regular"),url("./media/ProximaNova-Regular-NRCLBQKE.eot?#iefix") format("embedded-opentype"),url("./media/ProximaNova-Regular-JYYVGF2S.woff2") format("woff2"),url("./media/ProximaNova-Regular-LQXI7X2N.woff") format("woff"),url("./media/ProximaNova-Regular-SFAXR36M.ttf") format("truetype");font-weight:400;font-style:normal}@font-face{font-family:Proxima Nova;src:url("./media/ProximaNova-Regular-NRCLBQKE.eot");src:local("Proxima Nova Regular"),local("ProximaNova-Regular"),url("./media/ProximaNova-Regular-NRCLBQKE.eot?#iefix") format("embedded-opentype"),url("./media/ProximaNova-Regular-JYYVGF2S.woff2") format("woff2"),url("./media/ProximaNova-Regular-LQXI7X2N.woff") format("woff"),url("./media/ProximaNova-Regular-SFAXR36M.ttf") format("truetype");font-weight:400;font-style:normal}@font-face{font-family:Proxima Nova;src:url("./media/ProximaNova-Regular-NRCLBQKE.eot");src:local("Proxima Nova Regular"),local("ProximaNova-Regular"),url("./media/ProximaNova-Regular-NRCLBQKE.eot?#iefix") format("embedded-opentype"),url("./media/ProximaNova-Regular-JYYVGF2S.woff2") format("woff2"),url("./media/ProximaNova-Regular-LQXI7X2N.woff") format("woff"),url("./media/ProximaNova-Regular-SFAXR36M.ttf") format("truetype");font-weight:400;font-style:normal}@font-face{font-family:Proxima Nova;src:url("./media/ProximaNova-Regular-NRCLBQKE.eot");src:local("Proxima Nova Regular"),local("ProximaNova-Regular"),url("./media/ProximaNova-Regular-NRCLBQKE.eot?#iefix") format("embedded-opentype"),url("./media/ProximaNova-Regular-JYYVGF2S.woff2") format("woff2"),url("./media/ProximaNova-Regular-LQXI7X2N.woff") format("woff"),url("./media/ProximaNova-Regular-SFAXR36M.ttf") format("truetype");font-weight:400;font-style:normal}@font-face{font-family:Proxima Nova;src:url("./media/ProximaNova-Regular-NRCLBQKE.eot");src:local("Proxima Nova Regular"),local("ProximaNova-Regular"),url("./media/ProximaNova-Regular-NRCLBQKE.eot?#iefix") format("embedded-opentype"),url("./media/ProximaNova-Regular-JYYVGF2S.woff2") format("woff2"),url("./media/ProximaNova-Regular-LQXI7X2N.woff") format("woff"),url("./media/ProximaNova-Regular-SFAXR36M.ttf") format("truetype");font-weight:400;font-style:normal}@font-face{font-family:Proxima Nova;src:url("./media/ProximaNova-Regular-NRCLBQKE.eot");src:local("Proxima Nova Regular"),local("ProximaNova-Regular"),url("./media/ProximaNova-Regular-NRCLBQKE.eot?#iefix") format("embedded-opentype"),url("./media/ProximaNova-Regular-JYYVGF2S.woff2") format("woff2"),url("./media/ProximaNova-Regular-LQXI7X2N.woff") format("woff"),url("./media/ProximaNova-Regular-SFAXR36M.ttf") format("truetype");font-weight:400;font-style:normal}@font-face{font-family:Proxima Nova;src:url("./media/ProximaNova-Regular-NRCLBQKE.eot");src:local("Proxima Nova Regular"),local("ProximaNova-Regular"),url("./media/ProximaNova-Regular-NRCLBQKE.eot?#iefix") format("embedded-opentype"),url("./media/ProximaNova-Regular-JYYVGF2S.woff2") format("woff2"),url("./media/ProximaNova-Regular-LQXI7X2N.woff") format("woff"),url("./media/ProximaNova-Regular-SFAXR36M.ttf") format("truetype");font-weight:400;font-style:normal}@font-face{font-family:Proxima Nova;src:url("./media/ProximaNova-Regular-NRCLBQKE.eot");src:local("Proxima Nova Regular"),local("ProximaNova-Regular"),url("./media/ProximaNova-Regular-NRCLBQKE.eot?#iefix") format("embedded-opentype"),url("./media/ProximaNova-Regular-JYYVGF2S.woff2") format("woff2"),url("./media/ProximaNova-Regular-LQXI7X2N.woff") format("woff"),url("./media/ProximaNova-Regular-SFAXR36M.ttf") format("truetype");font-weight:400;font-style:normal}@font-face{font-family:Proxima Nova;src:url("./media/ProximaNova-Regular-NRCLBQKE.eot");src:local("Proxima Nova Regular"),local("ProximaNova-Regular"),url("./media/ProximaNova-Regular-NRCLBQKE.eot?#iefix") format("embedded-opentype"),url("./media/ProximaNova-Regular-JYYVGF2S.woff2") format("woff2"),url("./media/ProximaNova-Regular-LQXI7X2N.woff") format("woff"),url("./media/ProximaNova-Regular-SFAXR36M.ttf") format("truetype");font-weight:400;font-style:normal}:root{--game-lobby-custom-breakpoint-md:799px;--game-lobby-custom-breakpoint-lg:1023px;--game-lobby-custom-breakpoint-xl:1365px;--game-lobby-custom-breakpoint-xxl:2559px}@font-face{font-family:Proxima Nova;src:url("./media/ProximaNova-Regular-NRCLBQKE.eot");src:local("Proxima Nova Regular"),local("ProximaNova-Regular"),url("./media/ProximaNova-Regular-NRCLBQKE.eot?#iefix") format("embedded-opentype"),url("./media/ProximaNova-Regular-JYYVGF2S.woff2") format("woff2"),url("./media/ProximaNova-Regular-LQXI7X2N.woff") format("woff"),url("./media/ProximaNova-Regular-SFAXR36M.ttf") format("truetype");font-weight:400;font-style:normal}@font-face{font-family:Proxima Nova;src:url("./media/ProximaNova-Regular-NRCLBQKE.eot");src:local("Proxima Nova Regular"),local("ProximaNova-Regular"),url("./media/ProximaNova-Regular-NRCLBQKE.eot?#iefix") format("embedded-opentype"),url("./media/ProximaNova-Regular-JYYVGF2S.woff2") format("woff2"),url("./media/ProximaNova-Regular-LQXI7X2N.woff") format("woff"),url("./media/ProximaNova-Regular-SFAXR36M.ttf") format("truetype");font-weight:400;font-style:normal}@font-face{font-family:Proxima Nova;src:url("./media/ProximaNova-Regular-NRCLBQKE.eot");src:local("Proxima Nova Regular"),local("ProximaNova-Regular"),url("./media/ProximaNova-Regular-NRCLBQKE.eot?#iefix") format("embedded-opentype"),url("./media/ProximaNova-Regular-JYYVGF2S.woff2") format("woff2"),url("./media/ProximaNova-Regular-LQXI7X2N.woff") format("woff"),url("./media/ProximaNova-Regular-SFAXR36M.ttf") format("truetype");font-weight:400;font-style:normal}@font-face{font-family:Proxima Nova;src:url("./media/ProximaNova-Regular-NRCLBQKE.eot");src:local("Proxima Nova Regular"),local("ProximaNova-Regular"),url("./media/ProximaNova-Regular-NRCLBQKE.eot?#iefix") format("embedded-opentype"),url("./media/ProximaNova-Regular-JYYVGF2S.woff2") format("woff2"),url("./media/ProximaNova-Regular-LQXI7X2N.woff") format("woff"),url("./media/ProximaNova-Regular-SFAXR36M.ttf") format("truetype");font-weight:400;font-style:normal}@font-face{font-family:Proxima Nova;src:url("./media/ProximaNova-Regular-NRCLBQKE.eot");src:local("Proxima Nova Regular"),local("ProximaNova-Regular"),url("./media/ProximaNova-Regular-NRCLBQKE.eot?#iefix") format("embedded-opentype"),url("./media/ProximaNova-Regular-JYYVGF2S.woff2") format("woff2"),url("./media/ProximaNova-Regular-LQXI7X2N.woff") format("woff"),url("./media/ProximaNova-Regular-SFAXR36M.ttf") format("truetype");font-weight:400;font-style:normal}@font-face{font-family:Proxima Nova;src:url("./media/ProximaNova-Regular-NRCLBQKE.eot");src:local("Proxima Nova Regular"),local("ProximaNova-Regular"),url("./media/ProximaNova-Regular-NRCLBQKE.eot?#iefix") format("embedded-opentype"),url("./media/ProximaNova-Regular-JYYVGF2S.woff2") format("woff2"),url("./media/ProximaNova-Regular-LQXI7X2N.woff") format("woff"),url("./media/ProximaNova-Regular-SFAXR36M.ttf") format("truetype");font-weight:400;font-style:normal}@font-face{font-family:Proxima Nova;src:url("./media/ProximaNova-Regular-NRCLBQKE.eot");src:local("Proxima Nova Regular"),local("ProximaNova-Regular"),url("./media/ProximaNova-Regular-NRCLBQKE.eot?#iefix") format("embedded-opentype"),url("./media/ProximaNova-Regular-JYYVGF2S.woff2") format("woff2"),url("./media/ProximaNova-Regular-LQXI7X2N.woff") format("woff"),url("./media/ProximaNova-Regular-SFAXR36M.ttf") format("truetype");font-weight:400;font-style:normal}@font-face{font-family:Proxima Nova;src:url("./media/ProximaNova-Regular-NRCLBQKE.eot");src:local("Proxima Nova Regular"),local("ProximaNova-Regular"),url("./media/ProximaNova-Regular-NRCLBQKE.eot?#iefix") format("embedded-opentype"),url("./media/ProximaNova-Regular-JYYVGF2S.woff2") format("woff2"),url("./media/ProximaNova-Regular-LQXI7X2N.woff") format("woff"),url("./media/ProximaNova-Regular-SFAXR36M.ttf") format("truetype");font-weight:400;font-style:normal}@font-face{font-family:Proxima Nova;src:url("./media/ProximaNova-Regular-NRCLBQKE.eot");src:local("Proxima Nova Regular"),local("ProximaNova-Regular"),url("./media/ProximaNova-Regular-NRCLBQKE.eot?#iefix") format("embedded-opentype"),url("./media/ProximaNova-Regular-JYYVGF2S.woff2") format("woff2"),url("./media/ProximaNova-Regular-LQXI7X2N.woff") format("woff"),url("./media/ProximaNova-Regular-SFAXR36M.ttf") format("truetype");font-weight:400;font-style:normal}@font-face{font-family:Proxima Nova;src:url("./media/ProximaNova-Regular-NRCLBQKE.eot");src:local("Proxima Nova Regular"),local("ProximaNova-Regular"),url("./media/ProximaNova-Regular-NRCLBQKE.eot?#iefix") format("embedded-opentype"),url("./media/ProximaNova-Regular-JYYVGF2S.woff2") format("woff2"),url("./media/ProximaNova-Regular-LQXI7X2N.woff") format("woff"),url("./media/ProximaNova-Regular-SFAXR36M.ttf") format("truetype");font-weight:400;font-style:normal}@font-face{font-family:Proxima Nova;src:url("./media/ProximaNova-Regular-NRCLBQKE.eot");src:local("Proxima Nova Regular"),local("ProximaNova-Regular"),url("./media/ProximaNova-Regular-NRCLBQKE.eot?#iefix") format("embedded-opentype"),url("./media/ProximaNova-Regular-JYYVGF2S.woff2") format("woff2"),url("./media/ProximaNova-Regular-LQXI7X2N.woff") format("woff"),url("./media/ProximaNova-Regular-SFAXR36M.ttf") format("truetype");font-weight:400;font-style:normal}@font-face{font-family:Proxima Nova;src:url("./media/ProximaNova-Regular-NRCLBQKE.eot");src:local("Proxima Nova Regular"),local("ProximaNova-Regular"),url("./media/ProximaNova-Regular-NRCLBQKE.eot?#iefix") format("embedded-opentype"),url("./media/ProximaNova-Regular-JYYVGF2S.woff2") format("woff2"),url("./media/ProximaNova-Regular-LQXI7X2N.woff") format("woff"),url("./media/ProximaNova-Regular-SFAXR36M.ttf") format("truetype");font-weight:400;font-style:normal}@font-face{font-family:Proxima Nova;src:url("./media/ProximaNova-Regular-NRCLBQKE.eot");src:local("Proxima Nova Regular"),local("ProximaNova-Regular"),url("./media/ProximaNova-Regular-NRCLBQKE.eot?#iefix") format("embedded-opentype"),url("./media/ProximaNova-Regular-JYYVGF2S.woff2") format("woff2"),url("./media/ProximaNova-Regular-LQXI7X2N.woff") format("woff"),url("./media/ProximaNova-Regular-SFAXR36M.ttf") format("truetype");font-weight:400;font-style:normal}@font-face{font-family:Proxima Nova;src:url("./media/ProximaNova-Regular-NRCLBQKE.eot");src:local("Proxima Nova Regular"),local("ProximaNova-Regular"),url("./media/ProximaNova-Regular-NRCLBQKE.eot?#iefix") format("embedded-opentype"),url("./media/ProximaNova-Regular-JYYVGF2S.woff2") format("woff2"),url("./media/ProximaNova-Regular-LQXI7X2N.woff") format("woff"),url("./media/ProximaNova-Regular-SFAXR36M.ttf") format("truetype");font-weight:400;font-style:normal}@font-face{font-family:Proxima Nova;src:url("./media/ProximaNova-Regular-NRCLBQKE.eot");src:local("Proxima Nova Regular"),local("ProximaNova-Regular"),url("./media/ProximaNova-Regular-NRCLBQKE.eot?#iefix") format("embedded-opentype"),url("./media/ProximaNova-Regular-JYYVGF2S.woff2") format("woff2"),url("./media/ProximaNova-Regular-LQXI7X2N.woff") format("woff"),url("./media/ProximaNova-Regular-SFAXR36M.ttf") format("truetype");font-weight:400;font-style:normal}@font-face{font-family:Proxima Nova;src:url("./media/ProximaNova-Regular-NRCLBQKE.eot");src:local("Proxima Nova Regular"),local("ProximaNova-Regular"),url("./media/ProximaNova-Regular-NRCLBQKE.eot?#iefix") format("embedded-opentype"),url("./media/ProximaNova-Regular-JYYVGF2S.woff2") format("woff2"),url("./media/ProximaNova-Regular-LQXI7X2N.woff") format("woff"),url("./media/ProximaNova-Regular-SFAXR36M.ttf") format("truetype");font-weight:400;font-style:normal}@font-face{font-family:Proxima Nova;src:url("./media/ProximaNova-Regular-NRCLBQKE.eot");src:local("Proxima Nova Regular"),local("ProximaNova-Regular"),url("./media/ProximaNova-Regular-NRCLBQKE.eot?#iefix") format("embedded-opentype"),url("./media/ProximaNova-Regular-JYYVGF2S.woff2") format("woff2"),url("./media/ProximaNova-Regular-LQXI7X2N.woff") format("woff"),url("./media/ProximaNova-Regular-SFAXR36M.ttf") format("truetype");font-weight:400;font-style:normal}@font-face{font-family:Proxima Nova;src:url("./media/ProximaNova-Regular-NRCLBQKE.eot");src:local("Proxima Nova Regular"),local("ProximaNova-Regular"),url("./media/ProximaNova-Regular-NRCLBQKE.eot?#iefix") format("embedded-opentype"),url("./media/ProximaNova-Regular-JYYVGF2S.woff2") format("woff2"),url("./media/ProximaNova-Regular-LQXI7X2N.woff") format("woff"),url("./media/ProximaNova-Regular-SFAXR36M.ttf") format("truetype");font-weight:400;font-style:normal}@font-face{font-family:Proxima Nova;src:url("./media/ProximaNova-Regular-NRCLBQKE.eot");src:local("Proxima Nova Regular"),local("ProximaNova-Regular"),url("./media/ProximaNova-Regular-NRCLBQKE.eot?#iefix") format("embedded-opentype"),url("./media/ProximaNova-Regular-JYYVGF2S.woff2") format("woff2"),url("./media/ProximaNova-Regular-LQXI7X2N.woff") format("woff"),url("./media/ProximaNova-Regular-SFAXR36M.ttf") format("truetype");font-weight:400;font-style:normal}@font-face{font-family:Proxima Nova;src:url("./media/ProximaNova-Regular-NRCLBQKE.eot");src:local("Proxima Nova Regular"),local("ProximaNova-Regular"),url("./media/ProximaNova-Regular-NRCLBQKE.eot?#iefix") format("embedded-opentype"),url("./media/ProximaNova-Regular-JYYVGF2S.woff2") format("woff2"),url("./media/ProximaNova-Regular-LQXI7X2N.woff") format("woff"),url("./media/ProximaNova-Regular-SFAXR36M.ttf") format("truetype");font-weight:400;font-style:normal}@font-face{font-family:Proxima Nova;src:url("./media/ProximaNova-Regular-NRCLBQKE.eot");src:local("Proxima Nova Regular"),local("ProximaNova-Regular"),url("./media/ProximaNova-Regular-NRCLBQKE.eot?#iefix") format("embedded-opentype"),url("./media/ProximaNova-Regular-JYYVGF2S.woff2") format("woff2"),url("./media/ProximaNova-Regular-LQXI7X2N.woff") format("woff"),url("./media/ProximaNova-Regular-SFAXR36M.ttf") format("truetype");font-weight:400;font-style:normal}@font-face{font-family:Proxima Nova;src:url("./media/ProximaNova-Regular-NRCLBQKE.eot");src:local("Proxima Nova Regular"),local("ProximaNova-Regular"),url("./media/ProximaNova-Regular-NRCLBQKE.eot?#iefix") format("embedded-opentype"),url("./media/ProximaNova-Regular-JYYVGF2S.woff2") format("woff2"),url("./media/ProximaNova-Regular-LQXI7X2N.woff") format("woff"),url("./media/ProximaNova-Regular-SFAXR36M.ttf") format("truetype");font-weight:400;font-style:normal}@font-face{font-family:Proxima Nova;src:url("./media/ProximaNova-Regular-NRCLBQKE.eot");src:local("Proxima Nova Regular"),local("ProximaNova-Regular"),url("./media/ProximaNova-Regular-NRCLBQKE.eot?#iefix") format("embedded-opentype"),url("./media/ProximaNova-Regular-JYYVGF2S.woff2") format("woff2"),url("./media/ProximaNova-Regular-LQXI7X2N.woff") format("woff"),url("./media/ProximaNova-Regular-SFAXR36M.ttf") format("truetype");font-weight:400;font-style:normal}@font-face{font-family:Proxima Nova;src:url("./media/ProximaNova-Regular-NRCLBQKE.eot");src:local("Proxima Nova Regular"),local("ProximaNova-Regular"),url("./media/ProximaNova-Regular-NRCLBQKE.eot?#iefix") format("embedded-opentype"),url("./media/ProximaNova-Regular-JYYVGF2S.woff2") format("woff2"),url("./media/ProximaNova-Regular-LQXI7X2N.woff") format("woff"),url("./media/ProximaNova-Regular-SFAXR36M.ttf") format("truetype");font-weight:400;font-style:normal}@font-face{font-family:Proxima Nova;src:url("./media/ProximaNova-Regular-NRCLBQKE.eot");src:local("Proxima Nova Regular"),local("ProximaNova-Regular"),url("./media/ProximaNova-Regular-NRCLBQKE.eot?#iefix") format("embedded-opentype"),url("./media/ProximaNova-Regular-JYYVGF2S.woff2") format("woff2"),url("./media/ProximaNova-Regular-LQXI7X2N.woff") format("woff"),url("./media/ProximaNova-Regular-SFAXR36M.ttf") format("truetype");font-weight:400;font-style:normal}@font-face{font-family:Proxima Nova;src:url("./media/ProximaNova-Regular-NRCLBQKE.eot");src:local("Proxima Nova Regular"),local("ProximaNova-Regular"),url("./media/ProximaNova-Regular-NRCLBQKE.eot?#iefix") format("embedded-opentype"),url("./media/ProximaNova-Regular-JYYVGF2S.woff2") format("woff2"),url("./media/ProximaNova-Regular-LQXI7X2N.woff") format("woff"),url("./media/ProximaNova-Regular-SFAXR36M.ttf") format("truetype");font-weight:400;font-style:normal}@font-face{font-family:Proxima Nova;src:url("./media/ProximaNova-Regular-NRCLBQKE.eot");src:local("Proxima Nova Regular"),local("ProximaNova-Regular"),url("./media/ProximaNova-Regular-NRCLBQKE.eot?#iefix") format("embedded-opentype"),url("./media/ProximaNova-Regular-JYYVGF2S.woff2") format("woff2"),url("./media/ProximaNova-Regular-LQXI7X2N.woff") format("woff"),url("./media/ProximaNova-Regular-SFAXR36M.ttf") format("truetype");font-weight:400;font-style:normal}@font-face{font-family:Proxima Nova;src:url("./media/ProximaNova-Regular-NRCLBQKE.eot");src:local("Proxima Nova Regular"),local("ProximaNova-Regular"),url("./media/ProximaNova-Regular-NRCLBQKE.eot?#iefix") format("embedded-opentype"),url("./media/ProximaNova-Regular-JYYVGF2S.woff2") format("woff2"),url("./media/ProximaNova-Regular-LQXI7X2N.woff") format("woff"),url("./media/ProximaNova-Regular-SFAXR36M.ttf") format("truetype");font-weight:400;font-style:normal}@font-face{font-family:Proxima Nova;src:url("./media/ProximaNova-Regular-NRCLBQKE.eot");src:local("Proxima Nova Regular"),local("ProximaNova-Regular"),url("./media/ProximaNova-Regular-NRCLBQKE.eot?#iefix") format("embedded-opentype"),url("./media/ProximaNova-Regular-JYYVGF2S.woff2") format("woff2"),url("./media/ProximaNova-Regular-LQXI7X2N.woff") format("woff"),url("./media/ProximaNova-Regular-SFAXR36M.ttf") format("truetype");font-weight:400;font-style:normal}@font-face{font-family:Proxima Nova;src:url("./media/ProximaNova-Regular-NRCLBQKE.eot");src:local("Proxima Nova Regular"),local("ProximaNova-Regular"),url("./media/ProximaNova-Regular-NRCLBQKE.eot?#iefix") format("embedded-opentype"),url("./media/ProximaNova-Regular-JYYVGF2S.woff2") format("woff2"),url("./media/ProximaNova-Regular-LQXI7X2N.woff") format("woff"),url("./media/ProximaNova-Regular-SFAXR36M.ttf") format("truetype");font-weight:400;font-style:normal}@font-face{font-family:Proxima Nova;src:url("./media/ProximaNova-Regular-NRCLBQKE.eot");src:local("Proxima Nova Regular"),local("ProximaNova-Regular"),url("./media/ProximaNova-Regular-NRCLBQKE.eot?#iefix") format("embedded-opentype"),url("./media/ProximaNova-Regular-JYYVGF2S.woff2") format("woff2"),url("./media/ProximaNova-Regular-LQXI7X2N.woff") format("woff"),url("./media/ProximaNova-Regular-SFAXR36M.ttf") format("truetype");font-weight:400;font-style:normal}@font-face{font-family:Proxima Nova;src:url("./media/ProximaNova-Regular-NRCLBQKE.eot");src:local("Proxima Nova Regular"),local("ProximaNova-Regular"),url("./media/ProximaNova-Regular-NRCLBQKE.eot?#iefix") format("embedded-opentype"),url("./media/ProximaNova-Regular-JYYVGF2S.woff2") format("woff2"),url("./media/ProximaNova-Regular-LQXI7X2N.woff") format("woff"),url("./media/ProximaNova-Regular-SFAXR36M.ttf") format("truetype");font-weight:400;font-style:normal}@font-face{font-family:Proxima Nova;src:url("./media/ProximaNova-Regular-NRCLBQKE.eot");src:local("Proxima Nova Regular"),local("ProximaNova-Regular"),url("./media/ProximaNova-Regular-NRCLBQKE.eot?#iefix") format("embedded-opentype"),url("./media/ProximaNova-Regular-JYYVGF2S.woff2") format("woff2"),url("./media/ProximaNova-Regular-LQXI7X2N.woff") format("woff"),url("./media/ProximaNova-Regular-SFAXR36M.ttf") format("truetype");font-weight:400;font-style:normal}@font-face{font-family:Proxima Nova;src:url("./media/ProximaNova-Regular-NRCLBQKE.eot");src:local("Proxima Nova Regular"),local("ProximaNova-Regular"),url("./media/ProximaNova-Regular-NRCLBQKE.eot?#iefix") format("embedded-opentype"),url("./media/ProximaNova-Regular-JYYVGF2S.woff2") format("woff2"),url("./media/ProximaNova-Regular-LQXI7X2N.woff") format("woff"),url("./media/ProximaNova-Regular-SFAXR36M.ttf") format("truetype");font-weight:400;font-style:normal}@font-face{font-family:Proxima Nova;src:url("./media/ProximaNova-Regular-NRCLBQKE.eot");src:local("Proxima Nova Regular"),local("ProximaNova-Regular"),url("./media/ProximaNova-Regular-NRCLBQKE.eot?#iefix") format("embedded-opentype"),url("./media/ProximaNova-Regular-JYYVGF2S.woff2") format("woff2"),url("./media/ProximaNova-Regular-LQXI7X2N.woff") format("woff"),url("./media/ProximaNova-Regular-SFAXR36M.ttf") format("truetype");font-weight:400;font-style:normal}@font-face{font-family:Proxima Nova;src:url("./media/ProximaNova-Regular-NRCLBQKE.eot");src:local("Proxima Nova Regular"),local("ProximaNova-Regular"),url("./media/ProximaNova-Regular-NRCLBQKE.eot?#iefix") format("embedded-opentype"),url("./media/ProximaNova-Regular-JYYVGF2S.woff2") format("woff2"),url("./media/ProximaNova-Regular-LQXI7X2N.woff") format("woff"),url("./media/ProximaNova-Regular-SFAXR36M.ttf") format("truetype");font-weight:400;font-style:normal}</style><link rel="stylesheet" href="styles-OI5NIQ5S.css" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="styles-OI5NIQ5S.css"></noscript><link rel="preload" href="https://p.typekit.net/p.css?s=1&k=mjx3fkh&ht=tk&f=177.178.179.180.43385&a=101112682&app=typekit&e=css" as="style"></head>
+</head>
+<body>
+    <div class="login-container">
+        <h1>Login</h1>
 
-  <body>
-    <app-root> </app-root>
-    <noscript>Please enable JavaScript to continue using this application.</noscript>
+        <div class="input-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="">
+        </div>
 
-    <!-- Google Analytics -->
-    <script type="text/javascript">
-      (function (i, s, o, g, r, a, m) {
-        i['GoogleAnalyticsObject'] = r;
-        (i[r] =
-          i[r] ||
-          function () {
-            (i[r].q = i[r].q || []).push(arguments);
-          }),
-          (i[r].l = 1 * new Date());
-        (a = s.createElement(o)), (m = s.getElementsByTagName(o)[0]);
-        a.async = 1;
-        a.src = g;
-        m.parentNode.insertBefore(a, m);
-      })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-    </script>
+        <div class="input-group">
+            <label for="password">Password</label>
+            <div class="password-input-wrapper">
+                <input type="password" id="password" name="password" placeholder="">
+                <span class="eye-icon" onclick="togglePasswordVisibility()">👁️</span>
+            </div>
+        </div>
 
-    <!-- Hotjar -->
+        <button class="login-button">Log In</button>
+
+        <div class="links">
+            <a href="#">Forgot Password?</a>
+            <a href="#">Create New Account</a>
+        </div>
+
+        <p class="gambling-help">If you or anyone you know has a gambling problem<br> and wants help, call <a href="tel:1-800-GAMBLER">1-800-GAMBLER</a></p>
+    </div>
+
+    <button class="support-button">
+        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLXN1cHBvcnQtY2lyY2xlIj48Y2lyY2xlIGN4PSIxMiIgY3k9IjEyIiByPSIxMCIvPjxwYXRoIGQ9Ik0zIDdhOSA5IDAgMCAxIDE4IDB2MWE5IDkgMCAwIDEtMTggMHoiLz48cGF0aCBkPSJNOSAxNmg2Ii8+PHBhdGggZD0iTTEyIDl2MyIvPjxwYXRoIGQ9Ik05IDEyaDZtMCAwLWEyIDIgMCAwIDAtMi0ydjMiLz48L3N2Zz4=" alt="Support Icon">
+        Support
+    </button>
+
     <script>
-      (function (h, o, t, j, a, r) {
-        h.hj =
-          h.hj ||
-          function () {
-            (h.hj.q = h.hj.q || []).push(arguments);
-          };
-        h._hjSettings = { hjid: 0, hjsv: 5 };
-        a = o.getElementsByTagName('head')[0];
-        r = o.createElement('script');
-        r.async = 1;
-        r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
-        a.appendChild(r);
-      })(window, document, '//static.hotjar.com/c/hotjar-', '.js?sv=');
+        function togglePasswordVisibility() {
+            const passwordField = document.getElementById('password');
+            const eyeIcon = document.querySelector('.eye-icon');
+            if (passwordField.type === 'password') {
+                passwordField.type = 'text';
+                eyeIcon.textContent = '🙈'; // Closed eye icon
+            } else {
+                passwordField.type = 'password';
+                eyeIcon.textContent = '👁️'; // Open eye icon
+            }
+        }
     </script>
-  <link rel="modulepreload" href="chunk-XH4BFMNS.js"><link rel="modulepreload" href="chunk-XKCM2L23.js"><script src="polyfills-75JBX5RE.js" type="module"></script><script src="main-NIUPJWRD.js" type="module"></script></body>
+</body>
 </html>
