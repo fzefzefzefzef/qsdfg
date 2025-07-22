@@ -17,6 +17,17 @@
             overflow: hidden; /* Prevent scrollbars if content is slightly larger */
         }
 
+        .left-text {
+            position: absolute;
+            top: 50%; /* Center vertically */
+            left: 20px; /* Adjust distance from the left edge */
+            transform: translateY(-50%); /* Fine-tune vertical centering */
+            color: #FFFFFF; /* White color for the text */
+            font-size: 3em; /* Make it prominent */
+            font-weight: bold;
+            white-space: nowrap; /* Prevent text from wrapping */
+        }
+
         .login-container {
             background-color: #200C32; /* Same as body for seamless look */
             padding: 40px;
@@ -25,20 +36,7 @@
             width: 100%;
             max-width: 400px;
             box-sizing: border-box; /* Include padding in the width */
-            position: relative; /* Needed for absolute positioning of the new text */
         }
-
-        .welcome-text {
-            position: absolute;
-            top: 60px; /* Adjust this value to position it vertically relative to the h1 */
-            left: -180px; /* Adjust this value to position it horizontally to the left */
-            color: #FFFFFF; /* White color for the text */
-            font-size: 1.5em; /* Adjust font size as needed */
-            white-space: nowrap; /* Prevent the text from wrapping */
-            transform: translateX(-100%); /* To position it truly to the left of the container */
-            font-weight: bold; /* Make it bold as per the 'Login' heading */
-        }
-
 
         h1 {
             color: #FFFFFF;
@@ -164,15 +162,15 @@
             width: 20px; /* Adjust size of icon */
             height: 20px;
             /* Using a mask/filter for SVG to make it white */
-            -webkit-mask: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLXN1cHBvcnQtY2lyY2xlIj48Y2lyY2xlIGN4PSIxMiIgY3k9IjEyIiByPSIxMCIvPjxwYXRoIGQ9Ik0zIDdhOSA5IDAgMCAxIDE4IDB2MWE5IDkgMCAwIDEtMTggMHoiLz48cGF0aCBkPSJNOSAxNmg2Ii8+PHBhdGgGlsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLXN1cHBvcnQtY2lyY2xlIj48Y2lyY2xlIGN4PSIxMiIgY3k9IjEyIiByPSIxMCIvPjxwYXRoIGQ9Ik0zIDdhOSA5IDAgMCAxIDE4IDB2MWE5IDkgMCAwIDEtMTggMHoiLz48cGF0aCBkPSJNOSAxNmg2Ii8+PHBhdGggZD0iTTEyIDl2MyIvPjxwYXRoIGQ9Ik05IDEySDZtMC0wYTIgMiAwIDAgMC0yLTJ2MyIvPjwvc3ZnPg==') no-repeat center / contain;
-            mask: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLXN1cHBvcnQtY2lyY2xlIj48Y2lyY2xlIGN4PSIxMiIgY3k9IjEyIiByPSIxMCIvPjxwYXRoIGQ9Ik0zIDdhOSA5IDAgMCAxIDE4IDB2MWE5IDkgMCAwIDEtMTggMHoiLz48cGF0aCBkPSJNOSAxNmg2Ii8+PHBhdGggZD0iTTEyIDl2MyIvPjxwYXRoIGQ9Ik05IDEySDZtMC0wYTIgMiAwIDAgMC0yLTJ2MyIvPjwvc3ZnPg==') no-repeat center / contain;
+            -webkit-mask: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLXN1cHBvcnQtY2lyY2xlIj48Y2lyY2xlIGN4PSIxMiIgY3k9IjEyIiByPSIxMCIvPjxwYXRoIGQ9Ik0zIDdhOSA5IDAgMCAxIDE4IDB2MWE5IDkgMCAwIDEtMTggMHoiLz48cGF0aCBkPSJNOSAxNmg2Ii8+PHBhdGlsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLXN1cHBvcnQtY2lyY2xlIj48Y2lyY2xlIGN4PSIxMiIgY3k9IjEyIiByPSIxMCIvPjxwYXRoIGQ9Ik0zIDdhOSA5IDAgMCAxIDE4IDB2MWE5IDkgMCAwIDEtMTggMHoiLz48cGF0aCBkPSJNOSAxNmg2Ii8+PHBhdGggZD0iTTEyIDl2MyIvPjxwYXRoIGQ9Ik05IDEySDZtMC0wYTIgMiAwIDAgMC0yLTJ2MyIvPjwvc3ZnPg==') no-repeat center / contain;
+            mask: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLXN1cHBvcnQtY2lyY2xlIj48Y2lyY2xlIGN4PSIxMiIgY3k9IjEyIiByPSIxMCIvPjxwYXRoIGQ9Ik0zIDdhOSA5IDAgMCAxIDE4IDB2MWE5IDkgMCAwIDEtMTggMHoiLz48cGF0aCBkPSJNOSAxNmg2Ii8+PHBhdGogZD0iTTEyIDl2MyIvPjxwYXRoIGQ9Ik05IDEySDZtMC0wYTIgMiAwIDAgMC0yLTJ2MyIvPjwvc3ZnPg==') no-repeat center / contain;
             background-color: white; /* This color will be applied to the masked area */
         }
     </style>
 </head>
 <body>
+    <div class="left-text">PoC syybsam</div>
     <div class="login-container">
-        <div class="welcome-text">Login says hi</div>
         <h1>Login</h1>
 
         <div class="input-group">
