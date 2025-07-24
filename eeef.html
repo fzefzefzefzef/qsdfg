@@ -1,108 +1,160 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chemist Warehouse Login</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            display: flex;
-            /* Changed to push content to the left edge */
-            justify-content: flex-start; /* Aligns content to the beginning (left) of the flex container */
-            align-items: center; /* Centers vertically */
-            min-height: 100vh;
-            background-color: #0d47a1; /* Dark blue background */
-            padding-left: 50px; /* Add some padding on the left to move it slightly from the edge */
-            box-sizing: border-box; /* Include padding in the element's total width and height */
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Chemist Warehouse Login</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      min-height: 100vh;
+      background-color: #0d47a1;
+      padding-left: 45px;
+      box-sizing: border-box;
+    }
 
-        .login-container {
-            background-color: #fff;
-            padding: 40px;
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            text-align: center;
-            width: 100%;
-            max-width: 400px; /* Max width for the login box */
-        }
+    .login-container {
+      background-color: #fff;
+      padding: 40px;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      width: 100%;
+      max-width: 400px;
+    }
 
-        .login-container img {
-            max-width: 200px; /* Adjust as needed */
-            margin-bottom: 30px;
-        }
+    .login-container img {
+      max-width: 180px;
+      margin-bottom: 1px;
+    }
 
-        .login-container h2 {
-            font-size: 24px;
-            color: #333;
-            margin-bottom: 10px;
-        }
+    .login-container h2 {
+      font-size: 24px;
+      color: #333;
+      margin-top: 0;
+      margin-bottom: 10px; /* tighter spacing */
+    }
 
-        .login-container p {
-            font-size: 16px;
-            color: #666;
-            margin-bottom: 30px;
-        }
+    .login-container p {
+      font-size: 16px;
+      color: #666;
+      margin-bottom: 30px;
+    }
 
-        .login-container label {
-            display: block;
-            text-align: left;
-            margin-bottom: 8px;
-            font-size: 14px;
-            color: #555;
-        }
+    .login-container label {
+      display: block;
+      text-align: left;
+      margin-bottom: 8px;
+      font-size: 14px;
+      color: #555;
+    }
 
-        .login-container input[type="email"] {
-            width: calc(100% - 20px); /* Account for padding */
-            padding: 12px 10px;
-            margin-bottom: 20px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            font-size: 16px;
-        }
+    .login-container input[type="email"],
+    .login-container input[type="password"] {
+      width: calc(100% - 20px);
+      padding: 12px 10px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 16px;
+    }
 
-        .login-container button {
-            width: 100%;
-            padding: 12px;
-            background-color: #0d47a1; /* Dark blue button */
-            color: #fff;
-            border: none;
-            border-radius: 4px;
-            font-size: 18px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
+    .login-container button {
+      width: 100%;
+      padding: 12px;
+      background-color: #0d47a1;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      font-size: 18px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
 
-        .login-container button:hover {
-            background-color: #0a3a83; /* Slightly darker blue on hover */
-        }
+    .login-container button:hover {
+      background-color: #0a3a83;
+    }
 
-        .login-container .signup-link {
-            margin-top: 25px;
-            font-size: 15px;
-            color: #666;
-        }
+    .login-container .signup-link {
+      margin-top: 25px;
+      font-size: 15px;
+      color: #666;
+    }
 
-        .login-container .signup-link a {
-            color: #0d47a1; /* Dark blue link */
-            text-decoration: none;
-            font-weight: bold;
-        }
+    .login-container .signup-link a {
+      color: #0d47a1;
+      text-decoration: none;
+      font-weight: bold;
+    }
 
-        .login-container .signup-link a:hover {
-            text-decoration: underline;
-        }
-    </style>
+    .login-container .signup-link a:hover {
+      text-decoration: underline;
+    }
+
+    /* Hide password input initially */
+    #password-container {
+      display: none;
+    }
+  </style>
 </head>
 <body>
-    <div class="login-container">
-        <img src="https://images.ctfassets.net/hzgho8wo5m1w/3YprSv1x1a97SPwHeVAjHp/5a756f989347dd7a563994bf551986c2/Chemist_Warehouse_logo_-_We_beat_lockup.svg?w=1920&q=100" alt="Chemist Warehouse Logo">
-        <h2>Welcome</h2>
-        <p>Log in to Chemist Warehouse Retail</p>
-        <input type="email" placeholder="Email address*" required>
-        <button type="submit">Continue</button>
-        <p class="signup-link">Don't have an account? <a href="#">Sign up</a></p>
+  <div class="login-container">
+    <img
+      src="https://images.ctfassets.net/hzgho8wo5m1w/3YprSv1x1a97SPwHeVAjHp/5a756f989347dd7a563994bf551986c2/Chemist_Warehouse_logo_-_We_beat_lockup.svg?w=1920&q=100"
+      alt="Chemist Warehouse Logo"
+    />
+    <h2>Welcome</h2>
+    <p>Log in to Chemist Warehouse Retail</p>
+
+    <input
+      id="email"
+      type="email"
+      placeholder="Email address*"
+      required
+    />
+
+    <div id="password-container">
+      <input
+        id="password"
+        type="password"
+        placeholder="Password*"
+        required
+      />
     </div>
+
+    <button id="continue-btn" type="button">Continue</button>
+
+    <p class="signup-link">Don't have an account? <a href="#">Sign up</a></p>
+  </div>
+
+  <script>
+    const emailInput = document.getElementById('email');
+    const passwordContainer = document.getElementById('password-container');
+    const continueBtn = document.getElementById('continue-btn');
+    const passwordInput = document.getElementById('password');
+
+    continueBtn.addEventListener('click', () => {
+      if (!passwordContainer.style.display || passwordContainer.style.display === 'none') {
+        if (emailInput.checkValidity()) {
+          passwordContainer.style.display = 'block';
+          emailInput.disabled = true;
+          passwordInput.focus();
+          continueBtn.textContent = 'Log In';
+        } else {
+          emailInput.reportValidity();
+        }
+      } else {
+        if (passwordInput.value.length === 0) {
+          passwordInput.reportValidity();
+          return;
+        }
+        alert(`Logging in with:\nEmail: ${emailInput.value}\nPassword: ${'*'.repeat(passwordInput.value.length)}`);
+      }
+    });
+  </script>
 </body>
 </html>
