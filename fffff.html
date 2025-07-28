@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #200C32; /* Dark purple background */
+            color: #FFFFFF; /* White text */
+            display: flex;
+            /* No longer directly centering the login-container here.
+               We'll use a wrapper for the login part. */
+            min-height: 100vh;
+            overflow: hidden;
+        }
+
+        .page-wrapper {
+            display: flex;
+            width: 100vw; /* Take full viewport width */
+            height: 100vh; /* Take full viewport height */
+            justify-content: center; /* Center horizontally */
+            align-items: center; /* Center vertically */
+            position: relative; /* For absolute positioning of elements within */
+        }
+
+        .left-text-container {
+            position: absolute; /* Position relative to .page-wrapper */
+            left: 5%; /* Adjust distance from the left edge */
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 10;
+            color: #FFFFFF;
+            font-size: 3em;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+
+        .login-container {
+            background-color: #200C32;
+            padding: 40px;
+            border-radius: 8px;
+            text-align: center;
+            width: 100%;
+            max-width: 400px;
+            box-sizing: border-box;
+            z-index: 1; /* Ensure it's behind the 'Hiii' if overlapping */
+            /* Removed position: relative from here if you don't need absolute children inside it */
+        }
+
+        h1 {
+            color: #FFFFFF;
+            margin-bottom: 40px;
+            font-size: 2.5em;
+            font-weight: bold;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 1.1em;
+            color: #FFFFFF;
+        }
+
+        .input-group input {
+            width: calc(100% - 20px);
+            padding: 12px 10px;
+            background-color: #4C3C5F;
+            border: none;
+            border-radius: 5px;
+            color: #FFFFFF;
+            font-size: 1em;
+            box-sizing: border-box;
+        }
+
+        .password-input-wrapper {
+            position: relative;
+            width: 100%;
+        }
+
+        .password-input-wrapper input {
+            width: calc(100% - 50px);
+            padding-right: 40px;
+        }
+
+        .password-input-wrapper .eye-icon {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: #A0A0A0;
+            font-size: 1.2em;
+        }
+
+        .login-button {
+            width: 100%;
+            padding: 15px;
+            background-color: #8A2BE2;
+            color: #FFFFFF;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2em;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+            font-weight: bold;
+        }
+
+        .login-button:hover {
+            background-color: #9932CC;
+        }
+
+        .links {
+            margin-top: 25px;
+        }
+
+        .links a {
+            display: block;
+            color: #8A2BE2;
+            text-decoration: none;
+            margin-bottom: 10px;
+            font-size: 1em;
+            transition: color 0.3s ease;
+        }
+
+        .links a:hover {
+            color: #9932CC;
+        }
+
+        .gambling-help {
+            margin-top: 50px;
+            font-size: 0.9em;
+            color: #A0A0A0;
+            line-height: 1.5;
+        }
+
+        .gambling-help a {
+            color: #8A2BE2;
+            text-decoration: none;
+        }
+
+        .support-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #8A2BE2;
+            color: #FFFFFF;
+            border: none;
+            border-radius: 30px;
+            padding: 12px 20px;
+            font-size: 1em;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease;
+            font-weight: bold;
+            z-index: 100;
+        }
+
+        .support-button:hover {
+            background-color: #9932CC;
+        }
+
+        .support-button .icon {
+            margin-right: 8px;
+            width: 20px;
+            height: 20px;
+            -webkit-mask: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLXN1cHBvcnQtY2lyY2xlIj48Y2lyY2xlIGN4PSIxMiIgY3k9IjEyIiByPSIxMCIvPjxwYXRoIGQ9Ik0zIDdhOSA5IDAgMCAxIDE4IDB2MWE5IDkgMCAwIDEtMTggMHoiLz48cGF0aCBkPSJNOSAxNmg2Ii8+PHBhdGlsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLXN1cHBvcnQtY2lyY2xlIj48Y2lyY2xlIGN4PSIxMiIgY3k9IjEyIiByPSIxMCIvPjxwYXRoIGQ9Ik0zIDdhOSA5IDAgMCAxIDE4IDB2MWE5IDkgMCAwIDEtMTggMHoiLz48cGF0aCBkPSJNOSAxNmg2Ii8+PHBhdGggZD0iTTEyIDl2MyIvPjxwYXRoIGQ9Ik05IDEySDZtMC0wYTIgMiAwIDAgMC0yLTJ2MyIvPjwvc3ZnPg==') no-repeat center / contain;
+            mask: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLXN1cHBvcnQtY2lyY2xlIj48Y2lyY2xlIGN4PSIxMiIgY3k9IjEyIiByPSIxMCIvPjxwYXRoIGQ9Ik0zIDdhOSA5IDAgMCAxIDE4IDB2MWE5IDkgMCAwIDEtMTggMHoiLz48cGF0aCBkPSJNOSAxNmg2Ii8+PHBhdGggZD0iTTEyIDl2MyIvPjxwYXRoIGQ9Ik05IDEySDZtMC0wYTIgMiAwIDAgMC0yLTJ2MyIvPjwvc3ZnPg==') no-repeat center / contain;
+            background-color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="page-wrapper">
+        <div class="left-text-container">Hiii</div>
+        <div class="login-container">
+            <h1>Login</h1>
+
+            <div class="input-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="">
+            </div>
+
+            <div class="input-group">
+                <label for="password">Password</label>
+                <div class="password-input-wrapper">
+                    <input type="password" id="password" name="password" placeholder="">
+                    <span class="eye-icon" onclick="togglePasswordVisibility()">👁️</span>
+                </div>
+            </div>
+
+            <button class="login-button">Log In</button>
+
+            <div class="links">
+                <a href="#">Forgot Password?</a>
+                <a href="#">Create New Account</a>
+            </div>
+
+            <p class="gambling-help">If you or anyone you know has a gambling problem<br> and wants help, call <a href="tel:1-800-GAMBLER">1-800-GAMBLER</a></p>
+        </div>
+    </div>
+
+    <button class="support-button">
+        <span class="icon"></span>
+        Support
+    </button>
+
+    <script>
+        function togglePasswordVisibility() {
+            const passwordField = document.getElementById('password');
+            const eyeIcon = document.querySelector('.eye-icon');
+            if (passwordField.type === 'password') {
+                passwordField.type = 'text';
+                eyeIcon.textContent = '🙈'; // Closed eye icon
+            } else {
+                passwordField.type = 'password';
+                eyeIcon.textContent = '👁️'; // Open eye icon
+            }
+        }
+    </script>
+</body>
+</html>
