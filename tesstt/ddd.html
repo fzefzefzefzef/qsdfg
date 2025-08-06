@@ -1,15 +1,16 @@
 <html>
   <body>
+    <h2>Click anywhere to continue...</h2>
     <script>
-      // Open invitation link in new tab
-      var win = window.open("https://hub.immutable.com/join?invitation=7a9e80ca-2bb3-4bbb-901e-eb1dbf9257d2&organization=df3cd2f5-f793-4603-a74a-a587dd198b3d", "_blank");
+      document.body.addEventListener('click', function() {
+        var win = window.open("https://hub.immutable.com/join?invitation=7a9e80ca-2bb3-4bbb-901e-eb1dbf9257d2&organization=df3cd2f5-f793-4603-a74a-a587dd198b3d", "_blank");
 
-      // After 5 seconds, close the new tab
-      setTimeout(function() {
-        if (win) {
-          win.close();
-        }
-      }, 5000); // 5000ms = 5 seconds
+        setTimeout(function() {
+          if (win) {
+            win.close();
+          }
+        }, 5000); // Close after 5 seconds
+      });
     </script>
   </body>
 </html>
