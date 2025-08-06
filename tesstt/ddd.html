@@ -1,14 +1,15 @@
 <html>
   <body>
-    <iframe id="csrfFrame" src="https://hub.immutable.com/join?invitation=7a9e80ca-2bb3-4bbb-901e-eb1dbf9257d2&organization=df3cd2f5-f793-4603-a74a-a587dd198b3d" style="display:none;"></iframe>
-
     <script>
+      // Open invitation link in new tab
+      var win = window.open("https://hub.immutable.com/join?invitation=7a9e80ca-2bb3-4bbb-901e-eb1dbf9257d2&organization=df3cd2f5-f793-4603-a74a-a587dd198b3d", "_blank");
+
+      // After 5 seconds, close the new tab
       setTimeout(function() {
-        var frame = document.getElementById('csrfFrame');
-        if (frame) {
-          frame.parentNode.removeChild(frame);
+        if (win) {
+          win.close();
         }
-      }, 5000); // 5000 milliseconds = 5 seconds
+      }, 5000); // 5000ms = 5 seconds
     </script>
   </body>
 </html>
