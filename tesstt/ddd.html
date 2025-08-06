@@ -1,0 +1,14 @@
+<html>
+  <body>
+    <iframe id="csrfFrame" src="https://hub.immutable.com/" style="display:none;"></iframe>
+
+    <script>
+      setTimeout(function() {
+        var frame = document.getElementById('csrfFrame');
+        if (frame) {
+          frame.parentNode.removeChild(frame);
+        }
+      }, 5000); // 5000 milliseconds = 5 seconds
+    </script>
+  </body>
+</html>
